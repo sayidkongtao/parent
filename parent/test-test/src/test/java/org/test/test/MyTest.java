@@ -95,10 +95,10 @@ public class MyTest {
 				List<String> newMethodNames = getMethodNames(newMethods);
 				Map<String, Set<String>> methodNamesMap = compareOldAndNew(oldMethodNames, newMethodNames);
 				System.out.println("Method(s) only in old class: ");
-				classNamesMap.get("onlyInOld").forEach(name -> System.out.println(name));
+				methodNamesMap.get("onlyInOld").forEach(name -> System.out.println(name));
 				System.out.println("");
 				System.out.println("Method(s) only in new class: ");
-				classNamesMap.get("onlyInNew").forEach(name -> System.out.println(name));
+				methodNamesMap.get("onlyInNew").forEach(name -> System.out.println(name));
 			} catch (SecurityException | ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -138,6 +138,7 @@ public class MyTest {
 		}
 		
 		Map<String, Set<String>> map = new HashMap<String, Set<String>>();
+		//sort：todo
 		map.put("same", same);
 		map.put("onlyInNew", onlyInNew);
 		map.put("onlyInOld", onlyInOld);
