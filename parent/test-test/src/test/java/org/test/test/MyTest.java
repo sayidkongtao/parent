@@ -138,10 +138,9 @@ public class MyTest {
 		}
 		
 		Map<String, Set<String>> map = new HashMap<String, Set<String>>();
-		//sort：todo
-		map.put("same", same);
-		map.put("onlyInNew", onlyInNew);
-		map.put("onlyInOld", onlyInOld);
+		map.put("same", same.stream().sorted().collect(Collectors.toSet()));
+		map.put("onlyInNew", onlyInNew.stream().sorted().collect(Collectors.toSet()));
+		map.put("onlyInOld", onlyInOld.stream().sorted().collect(Collectors.toSet()));
 		return map;
 	}
 }
