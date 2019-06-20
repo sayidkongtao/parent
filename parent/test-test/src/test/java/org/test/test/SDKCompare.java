@@ -9,8 +9,13 @@ import java.util.stream.Collectors;
 
 public class SDKCompare {
 
+	//need to copy the files under hadean\hadean-test-web-api-sdk\src\test\java\hadean\swagger\client\api
+	//to
+	//hadean\\hadean-test-web-api\\src\\test\\java\\api\\xxxx
+	//then put this script under \\hadean\\hadean-test-web-api\\src\\test\\java\\xxx
     @Test
     public void test() {
+    	//modify the parameter before run
         compareSDK("C:\\Users\\kongtao01\\IdeaProjects\\hadean\\hadean-test-web-api\\src\\test\\java\\hadean\\api\\tests",
                 "C:\\Users\\kongtao01\\IdeaProjects\\hadean\\hadean-test-web-api\\src\\test\\java\\api",
                 "hadean.api.tests",
