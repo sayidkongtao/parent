@@ -35,12 +35,12 @@ public class SDKCompare {
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             System.out.println("For method in the same class:" + clazz);
             try {
-                Method[] oldMethods = Class.forName(oldPackageName + "." + clazz).getDeclaredMethods();
+                Method[] oldMethods = Class.forName(oldPackageName + "." + clazz).getMethods();
                 List<String> oldMethodNames = getMethodNames(oldMethods);
-                Method[] newMethods = Class.forName(newPackageName + "." + clazz).getDeclaredMethods();
+                Method[] newMethods = Class.forName(newPackageName + "." + clazz).getMethods();
                 List<String> newMethodNames = getMethodNames(newMethods);
                 Map<String, List<String>> methodNamesMap = compareOldAndNew(oldMethodNames, newMethodNames);
-                if (methodNamesMap.get("onlyInOld").size() != 0 && methodNamesMap.get("onlyInNew").size() != 0) {
+                if (methodNamesMap.get("onlyInOld").size() != 0 || methodNamesMap.get("onlyInNew").size() != 0) {
                     System.out.println("Method(s) only in old class: ");
                     methodNamesMap.get("onlyInOld").forEach(name -> System.out.println(name));
                     System.out.println("");
@@ -64,7 +64,7 @@ public class SDKCompare {
     }
 
     public List<String> getMethodNames(Method[] methods) {
-        return Arrays.asList(methods).stream().filter(file -> file.getName().endsWith("Test")).map(method -> method.getName()).collect(Collectors.toList());
+        return Arrays.asList(methods).stream().filter(file -> file.getName().contains("Test")).map(method -> method.getName()).collect(Collectors.toList());
     }
 
     public Map<String, List<String>> compareOldAndNew(List<String> oldNames, List<String> newNames) {
